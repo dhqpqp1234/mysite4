@@ -22,7 +22,7 @@
 		<div id="nav">
 			<ul class="clearfix">
 				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
+				<li><a href="/mysite4/board/list">게시판</a></li>
 				<li><a href="">갤러리</a></li>
 				<li><a href="/mysite4/guestbook/addList">방명록</a></li>
 			</ul>
@@ -55,7 +55,7 @@
 							<br>
 							(자유롭게 꾸며보세요!!)<br>
 							<br><br>
-							<a class="" href="">[방명록에 글 남기기]</a>
+							<a class="" href="/mysite4/guestbook/addList">[방명록에 글 남기기]</a>
 						</p>	
 					</div>
 					<!-- //greetings -->

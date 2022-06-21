@@ -42,11 +42,11 @@ public class UserService {
 	}
 	
 	//회원 정보 가져오기
-	public void getModifyUser(int no) {
+	public UserVo getModifyUser(int no) {
 		System.out.println("UserService>getUserModify()");
 		
-		userDao.getModifyUser(no);
-		
+		UserVo userVo = userDao.getModifyUser(no);
+		return userVo;
 	}
 	
 	//수정

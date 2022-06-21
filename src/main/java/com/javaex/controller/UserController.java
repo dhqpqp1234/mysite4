@@ -94,20 +94,24 @@ public class UserController {
 		//세션값 no로 저장
 		int no = authUser.getNo();
 		
-		userService.getModifyUser(no);
+		UserVo userVo = userService.getModifyUser(no);
+		
+		model.addAttribute("authUser", userVo);
+		
 		return "/user/modifyForm";
 	}
 	
 	//수정
 	@RequestMapping(value="/user/modify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modify(HttpSession session, Model model) {
+	public String modify(HttpSession session, @ModelAttribute UserVo userVo) {
 		System.out.println("UserController>modify()");
-		
+	
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		
 		int no = authUser.getNo();
+		userVo.setNo(no);
 		
-		userService.userUpdate(authUser);
+		userService.userUpdate(userVo);
 		return "redirect:/main";
 	}
 	

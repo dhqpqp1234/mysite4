@@ -21,9 +21,9 @@
 		<div id="nav">
 			<ul class="clearfix">
 				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
+				<li><a href="/mysite4/board/list">게시판</a></li>
 				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite4/guestbook/addList">방명록</a></li>
 			</ul>
 		</div>
 		<!-- //nav -->
@@ -86,7 +86,7 @@
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content"></textarea>
+								<textarea id="txt-content" name ="content"></textarea>
 							</div>
 							
 							<a id="btn_cancel" href="">취소</a>

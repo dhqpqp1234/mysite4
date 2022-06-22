@@ -75,4 +75,12 @@ public class BoardService {
 		return count;
 	}
 	
+	//조회수 증가
+	public int boardUphit(int no) {
+		System.out.println("BoardService>boardUphit()");
+		
+		int count = boardDao.boardUphit(no);
+		
+		return count;
+	}
 }

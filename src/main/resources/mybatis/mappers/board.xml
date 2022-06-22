@@ -61,4 +61,14 @@
 				 where no = #{no}
 		]]>
 	</update>
+	
+	<!-- 조회수증가 -->
+	<update id="boardUphit" parameterType="int">
+		<![CDATA[
+			update board
+			set hit = hit + 1
+			where no = #{no}
+		]]>
+	</update>
+	
 </mapper>

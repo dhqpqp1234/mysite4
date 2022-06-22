@@ -64,9 +64,14 @@ public class BoardController {
 	public String boardRead(@RequestParam("no") int no, Model model) {
 		System.out.println("BoardController>boardRead()");
 		
+		boardService.boardUphit(no);
+		
 		BoardVo boardVo = boardService.boardRead(no);
 		
 		model.addAttribute("boardVo",boardVo);
+		
+		
+		
 		return "/board/read";
 	}
 	
@@ -104,7 +109,7 @@ public class BoardController {
 		
 		System.out.println(boardVo);
 		
-		return "";
+		return "redirect:/board/list";
 	}
 	
 	

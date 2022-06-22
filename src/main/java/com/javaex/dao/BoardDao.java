@@ -80,4 +80,13 @@ public class BoardDao {
 	 	return boardVo;
 	}
 	
+	//조회수
+	public int boardUphit(int no) {
+		System.out.println("BoardDao>boardUphit()");
+		
+		int count = sqlSession.update("board.boardUphit",no);
+		
+		return count;
+	}
+	
 }

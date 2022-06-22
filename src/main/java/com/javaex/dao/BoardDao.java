@@ -27,6 +27,8 @@ public class BoardDao {
 		
 		List<BoardVo> boardList = sqlSession.selectList("board.boardList");
 		
+		System.out.println(boardList);
+		
 		return boardList;
 		
 	}
@@ -40,10 +42,10 @@ public class BoardDao {
 	}
 	
 	//삭제
-	public int boardDelete(BoardVo boardVo) {
+	public int boardDelete(int no) {
 		System.out.println("BoardDao>boardDelete()");
 		
-		int count = sqlSession.delete("board.boardDelete",boardVo);
+		int count = sqlSession.delete("board.boardDelete",no);
 		
 		return count;
 	}

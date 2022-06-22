@@ -39,11 +39,17 @@ public class BoardService {
 	}
 	
 	//삭제
-	public int boardDelete(BoardVo boardVo) {
+	public int boardDelete(int no) {
 		System.out.println("BoardService>boardDelete()");
 		
-		int count = boardDao.boardDelete(boardVo);
+		int count = boardDao.boardDelete(no);
 		
 		return count;
 	}
+	
+	//회원정보 가져오기
+	
+	
+	//읽기
+	 
 }

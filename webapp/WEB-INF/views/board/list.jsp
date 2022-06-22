@@ -80,9 +80,9 @@
 									<td>${boardVo.name}</td>
 									<td>${boardVo.hit}</td>
 									<td>${boardVo.regDate}</td>
-								<c:if test="${authUser.no == boardVo.no}">	
+								<c:if test="${authUser.no == boardVo.userNo}">	
 									<td><a href="/mysite4/board/delete?no=${boardVo.no}">[삭제]</a></td>
-								</c:if>	
+								</c:if>
 								</tr>
 							</c:forEach>
 								

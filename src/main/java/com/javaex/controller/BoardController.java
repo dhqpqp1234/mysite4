@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVo;
@@ -36,7 +37,6 @@ public class BoardController {
 		
 		model.addAttribute("boardList",boardList);
 		
-		System.out.println(boardList);
 		
 		return "/board/list";
 	}
@@ -61,18 +61,24 @@ public class BoardController {
 	
 	//읽기
 	@RequestMapping(value="/board/read", method = {RequestMethod.GET, RequestMethod.POST})
-	public String boardRead() {
+	public String boardRead(BoardVo boardVo) {
 		System.out.println("BoardController>boardRead()");
-		return "";
+		
+		
+		
+		return "/board/read";
 	}
 	
 	//삭제
 	@RequestMapping(value="/board/delete", method = {RequestMethod.GET, RequestMethod.POST})
-	public String boardDelete(@ModelAttribute BoardVo boardVo) {
+	public String boardDelete(@RequestParam("no") int no ) {
 		System.out.println("BoardController>boardDelete()");
 		
-		boardService.boardDelete(boardVo);
+		boardService.boardDelete(no);
 		
-		return "redirect:/mysite4/board/list";
+		
+		System.out.println(no);
+		
+		return "redirect:/board/list";
 	}
 }

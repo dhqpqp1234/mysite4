@@ -13,7 +13,8 @@
        				b.content content,
        				b.hit hit,
        				b.reg_date regDate,
-       				b.user_no userNo
+       				b.user_no userNo,
+       				name name
 			from board b, users u
 			where b.user_no = u.no
 		]]>

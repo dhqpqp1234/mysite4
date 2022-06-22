@@ -16,6 +16,7 @@ import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVo;
 
 @Controller
+@RequestMapping(value="/board")
 public class BoardController {
 	
 	//필드
@@ -29,7 +30,7 @@ public class BoardController {
 	//메소드 일반
 	
 	//리스트 
-	@RequestMapping(value="/board/list", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String boardList(Model model) {
 		System.out.println("BoardController>list()");
 		
@@ -42,7 +43,7 @@ public class BoardController {
 	}
 	
 	//등록 폼
-	@RequestMapping(value = "/board/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardWriteForm() {
 		System.out.println("BoardController>boardWriteForm()");
 		
@@ -50,7 +51,7 @@ public class BoardController {
 	}
 	
 	//등록
-	@RequestMapping(value="/board/write", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/write", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardInsert(@ModelAttribute BoardVo boardVo) {
 		System.out.println("BoardController>boardInsert()");
 		
@@ -60,7 +61,7 @@ public class BoardController {
 	}
 	
 	//읽기
-	@RequestMapping(value="/board/read", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardRead(@RequestParam("no") int no, Model model) {
 		System.out.println("BoardController>boardRead()");
 		
@@ -76,7 +77,7 @@ public class BoardController {
 	}
 	
 	//삭제
-	@RequestMapping(value="/board/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardDelete(@RequestParam("no") int no ) {
 		System.out.println("BoardController>boardDelete()");
 		
@@ -89,7 +90,7 @@ public class BoardController {
 	}
 	
 	//수정폼
-	@RequestMapping(value="/board/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardModifyForm(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController>modifyForm()");
 			
@@ -101,7 +102,7 @@ public class BoardController {
 	}
 	
 	//수정
-	@RequestMapping(value="/board/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/modify", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardModify(@ModelAttribute BoardVo boardVo, Model model) {
 		System.out.println("BoardController>modify()");
 		

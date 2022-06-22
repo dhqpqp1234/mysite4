@@ -16,11 +16,12 @@ import com.javaex.service.GuestbookService;
 import com.javaex.vo.GuestBookVo;
 
 @Controller
+@RequestMapping(value="/guestbook")
 public class GuestbookController {
 	@Autowired
 	GuestbookService guestService; 
 	//리스트
-	@RequestMapping(value="/guestbook/addList", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/addList", method= {RequestMethod.GET, RequestMethod.POST})
 	public String addList(Model model) {
 		System.out.println("GuestbookController>addList");
 		
@@ -31,7 +32,7 @@ public class GuestbookController {
 	}
 	
 	//추가
-	@RequestMapping(value="/guestbook/add", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/add", method = {RequestMethod.GET, RequestMethod.POST})
 	public String add(@ModelAttribute GuestBookVo guestVo) {
 		System.out.println("guestbook>add");
 		
@@ -42,7 +43,7 @@ public class GuestbookController {
 	}
 	
 	//삭제폼
-	@RequestMapping(value="/guestbook/deleteForm", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/deleteForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String deleteFrom(@RequestParam("no") int no, Model model) {
 		System.out.println("guestbook>deleteForm");
 		
@@ -55,7 +56,7 @@ public class GuestbookController {
 	}
 	
 	//삭제
-	@RequestMapping(value="/guestbook/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@ModelAttribute GuestBookVo guestVo) {
 		System.out.println("guestbook>delete");
 		

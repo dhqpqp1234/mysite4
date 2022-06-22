@@ -18,14 +18,7 @@
 		<!-- header 블러오기 -->
      	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="/mysite4/board/writeForm">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="/mysite4/guestbook/addList">방명록</a></li>
-			</ul>
-		</div>
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<!-- //nav -->
 
 		<div id="container" class="clearfix">

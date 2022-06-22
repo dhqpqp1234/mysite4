@@ -20,6 +20,22 @@
 		]]>
 	</select>
 	
+	<!-- 유저정보 -->
+	<select id="boardGetUser" parameterType="int" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			select b.no no,
+    			   b.title title,
+       			   b.content content,
+       			   b.hit hit,
+       			   b.reg_date regDate,
+       			   b.user_no userNo,
+       			   name name
+			from board b, users u
+			where b.user_no = u.no
+			and b.no = #{no}
+		]]>
+	</select>
+	
 	<!-- 등록 -->
 	<insert id="boardInsert" parameterType = "com.javaex.vo.BoardVo">
 		<![CDATA[
@@ -35,4 +51,14 @@
 			where no = #{no}
 		]]>
 	</delete>	
+	
+	<!-- 수정 -->
+	<update id="boardUpdate" parameterType="com.javaex.vo.BoardVo">
+		<![CDATA[
+				 update board
+				 set 	title = #{title},
+   				 		content = #{content}
+				 where no = #{no}
+		]]>
+	</update>
 </mapper>

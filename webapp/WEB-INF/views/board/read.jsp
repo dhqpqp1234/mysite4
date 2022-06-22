@@ -21,9 +21,9 @@
 		<div id="nav">
 			<ul class="clearfix">
 				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
+				<li><a href="/mysite4/board/list">게시판</a></li>
 				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite4/guestbook/addList">방명록</a></li>
 			</ul>
 		</div>
 		<!-- //nav -->
@@ -86,9 +86,10 @@
 									${boardVo.content}
 								</span>
 							</div>
-							
-							<a id="btn_modify" href="">수정</a>
-							<a id="btn_modify" href="">목록</a>
+								<c:if test="${authUser.no == boardVo.userNo}">								
+									<a id="btn_modify" href="/mysite4/board/modifyForm?no=${boardVo.no}">수정</a>
+								</c:if>
+							<a id="btn_modify" href="/mysite4/board/list">목록</a>
 							
 						</form>
 						<!-- //form -->

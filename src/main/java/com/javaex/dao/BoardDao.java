@@ -50,4 +50,34 @@ public class BoardDao {
 		return count;
 	}
 	
+	//수정폼(정보가져오기)
+	public BoardVo getBoardUser(int no) {
+		System.out.println("BoardDao>boardGetUser()");
+		
+		BoardVo boardVo = sqlSession.selectOne("board.boardGetUser",no);
+		
+		System.out.println(boardVo	);
+		
+		return boardVo;
+	}
+	
+	//수정
+	public int boardUpdate(BoardVo boardVo) {
+		System.out.println("BoardDao>boardUpdate()");
+		
+		int count = sqlSession.update("board.boardUpdate",boardVo);
+		
+		return count;
+	}
+	
+	//읽기
+	public BoardVo boardRead(int no) {
+		System.out.println("BoardDao>boardRead()");
+		
+	 	BoardVo boardVo = sqlSession.selectOne("board.boardGetUser", no);
+	 	
+	 	
+	 	return boardVo;
+	}
+	
 }

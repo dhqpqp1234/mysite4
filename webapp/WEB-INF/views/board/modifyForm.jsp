@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,25 +15,8 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite</a>
-			</h1>
-
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->	
-			<ul>
-				<li><a href="" class="btn_s">로그인</a></li>
-				<li><a href="" class="btn_s">회원가입</a></li>
-			</ul>
-			
-		</div>
-		<!-- //header -->
+		<!-- header 블러오기 -->
+     	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 		<div id="nav">
 			<ul class="clearfix">
@@ -71,43 +55,38 @@
 	
 				<div id="board">
 					<div id="modifyForm">
-						<form action="#" method="get">
+						<form action="/mysite4/board/modify" method="get">
+						<input type="hidden" name="action" value="modify">
+						<input type="hidden" name="no" value="${boardVo.no}">
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">정우성</span>
+								<span class="form-value">${boardVo.name}</span>
 							</div>
 							
 							<!-- 조회수 -->
 							<div class="form-group">
 								<span class="form-text">조회수</span>
-								<span class="form-value">123</span>
+								<span class="form-value">${boardVo.hit}</span>
 							</div>
 							
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">2020-03-02</span>
+								<span class="form-value">${boardVo.regDate}</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
-								<input type="text" id="txt-title" name="" value="여기에는 글제목이 출력됩니다.">
+								<input type="text" id="txt-title" name="title" value="">
 							</div>
 						
 							
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content">여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.
-	여기에는 본문내용이 출력됩니다.</textarea>
+								<textarea id="txt-content"></textarea>
 							</div>
 							
 							<a id="btn_cancel" href="">취소</a>
@@ -126,10 +105,8 @@
 		<!-- //container  -->
 
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
-		<!-- //footer -->
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+      <!-- //footer -->
 	</div>
 	<!-- //wrap -->
 

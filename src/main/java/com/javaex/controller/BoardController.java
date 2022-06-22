@@ -61,11 +61,12 @@ public class BoardController {
 	
 	//읽기
 	@RequestMapping(value="/board/read", method = {RequestMethod.GET, RequestMethod.POST})
-	public String boardRead(BoardVo boardVo) {
+	public String boardRead(@RequestParam("no") int no, Model model) {
 		System.out.println("BoardController>boardRead()");
 		
+		BoardVo boardVo = boardService.boardRead(no);
 		
-		
+		model.addAttribute("boardVo",boardVo);
 		return "/board/read";
 	}
 	
@@ -81,4 +82,30 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	//수정폼
+	@RequestMapping(value="/board/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String boardModifyForm(Model model, @RequestParam("no") int no) {
+		System.out.println("BoardController>modifyForm()");
+			
+		BoardVo boardVo = boardService.getBoardUser(no);
+		
+		model.addAttribute("boardVo" ,boardVo);
+		
+		return "/board/modifyForm";
+	}
+	
+	//수정
+	@RequestMapping(value="/board/modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String boardModify(@ModelAttribute BoardVo boardVo, Model model) {
+		System.out.println("BoardController>modify()");
+		
+		boardService.boardUpdate(boardVo);
+		
+		System.out.println(boardVo);
+		
+		return "";
+	}
+	
+	
 }

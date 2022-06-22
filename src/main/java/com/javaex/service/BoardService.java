@@ -47,9 +47,32 @@ public class BoardService {
 		return count;
 	}
 	
-	//회원정보 가져오기
-	
 	
 	//읽기
-	 
+	public BoardVo boardRead(int no) { 
+		System.out.println("BoardService>boardRead()");
+		
+		BoardVo boardVo = boardDao.boardRead(no);
+		
+		return boardVo;
+	}
+	
+	//수정폼(정보가져오기)
+	public BoardVo getBoardUser(int no) {
+		System.out.println("BoardService>boardGetUser()");
+		
+		BoardVo boardVo = boardDao.getBoardUser(no);
+		
+		return boardVo;
+	}
+	
+	//수정
+	public int boardUpdate(BoardVo boardVo) {
+		System.out.println("BoardService>boardUpdate()");
+		
+		int count = boardDao.boardUpdate(boardVo);
+		
+		return count;
+	}
+	
 }

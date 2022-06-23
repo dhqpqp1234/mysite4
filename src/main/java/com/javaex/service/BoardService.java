@@ -29,6 +29,24 @@ public class BoardService {
 		return boardList;
 	}
 	
+	//검색 리스트
+	public List<BoardVo> boardList2(String keyword){
+		System.out.println("BoardService>boardList2()");
+		
+		List<BoardVo> boardList = boardDao.boardList2(keyword);
+		
+		return boardList;
+	}
+	
+	//리스트 + 검색
+		public List<BoardVo> boardList3(String keyword){
+			System.out.println("BoardService>boardList()");
+			
+			List<BoardVo> boardList = boardDao.boardList3(keyword);
+			
+			return boardList;
+		}
+	
 	//등록
 	public int boardInsert(BoardVo boardVo) {
 		System.out.println("BoardService>boardInsert()");

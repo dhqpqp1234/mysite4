@@ -2,8 +2,6 @@ package com.javaex.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +37,34 @@ public class BoardController {
 		model.addAttribute("boardList",boardList);
 		
 		
-		return "/board/list";
+		return "board/list";
+	}
+	
+	//검색
+	@RequestMapping(value="/search", method= {RequestMethod.GET, RequestMethod.POST})
+	public String search(@RequestParam("keyword") String keyword, Model model){
+		System.out.println("BoardDao>search()");
+		System.out.println(keyword);
+		
+		List<BoardVo> boardList = boardService.boardList2(keyword);
+		model.addAttribute("boardList",boardList);
+		
+		return "board/list2";
+	}
+	
+	//리스트 + 검색
+	@RequestMapping(value="/list3", method= {RequestMethod.GET, RequestMethod.POST})
+	public String boardList3(Model model,
+							@RequestParam(value="keyword", required = false, defaultValue ="") String keyword) {
+		
+		System.out.println("BoardController>list3()");
+		System.out.println("Dao keyword" + keyword);
+		
+		
+		List<BoardVo> boardList = boardService.boardList3(keyword);
+		model.addAttribute("boardList",boardList);
+		
+		return "board/list3";
 	}
 	
 	//등록 폼
@@ -47,7 +72,7 @@ public class BoardController {
 	public String boardWriteForm() {
 		System.out.println("BoardController>boardWriteForm()");
 		
-		return "/board/writeForm";
+		return "board/writeForm";
 	}
 	
 	//등록
@@ -73,7 +98,7 @@ public class BoardController {
 		
 		
 		
-		return "/board/read";
+		return "board/read";
 	}
 	
 	//삭제
@@ -98,7 +123,7 @@ public class BoardController {
 		
 		model.addAttribute("boardVo" ,boardVo);
 		
-		return "/board/modifyForm";
+		return "board/modifyForm";
 	}
 	
 	//수정

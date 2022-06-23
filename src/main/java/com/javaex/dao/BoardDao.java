@@ -32,6 +32,26 @@ public class BoardDao {
 		return boardList;
 		
 	}
+	//검색 
+	public List<BoardVo> boardList2(String keyword){
+		System.out.println("BoardDao>boardList2()");
+		System.out.println(keyword);
+		
+		List<BoardVo> boardList = sqlSession.selectList("board.boardList2", keyword);
+		
+		
+		return boardList;
+	}
+	
+	//검색 + 리스트 
+		public List<BoardVo> boardList3(String keyword){
+			System.out.println("BoardDao>boardList3()");
+			
+			List<BoardVo> boardList = sqlSession.selectList("board.boardList3",keyword);
+			
+			
+			return boardList;
+		}
 	
 	//등록
 	public int boardInsert(BoardVo boardVo) {

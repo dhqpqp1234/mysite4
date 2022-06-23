@@ -14,11 +14,52 @@
        				b.hit hit,
        				b.reg_date regDate,
        				b.user_no userNo,
-       				name name
+       				u.name name
 			from board b, users u
 			where b.user_no = u.no
+			order by no desc
 		]]>
 	</select>
+	
+	<!-- 검색 --> 
+	<select id="boardList2" parameterType= "String" resultType = "com.javaex.vo.BoardVo">
+		<![CDATA[
+			select  b.no no,
+       				b.title title,
+       				b.content content,
+       				b.hit hit,
+       				b.reg_date regDate,
+       				b.user_no userNo,
+       				u.name name
+			from board b, users u
+			where b.user_no = u.no
+			and title like '%'||#{value}||'%'
+			order by no desc
+		]]>
+	</select> 
+	
+	<!-- 검색 + 리스트 --> 
+	<select id="boardList3" parameterType = "String" resultType = "com.javaex.vo.BoardVo">
+		<![CDATA[
+			select  b.no no,
+       				b.title title,
+       				b.content content,
+       				b.hit hit,
+       				b.reg_date regDate,
+       				b.user_no userNo,
+       				u.name name
+			from board b, users u
+			where b.user_no = u.no
+			]]>
+		
+		<if test="value != '' and value != null "> <!-- 키워드가 있으면 아래가 작동 -->		
+			and title like '%'||#{keyword}||'%'
+		</if>
+			
+		<![CDATA[	
+			order by no desc
+		]]>
+	</select> 
 	
 	<!-- 유저정보 -->
 	<select id="boardGetUser" parameterType="int" resultType="com.javaex.vo.BoardVo">

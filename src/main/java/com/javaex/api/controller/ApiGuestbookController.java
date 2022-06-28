@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.GuestbookService;
@@ -48,6 +50,32 @@ public class ApiGuestbookController {
 		 System.out.println(vo);
 		 
 		return gVo;
+	}
+	
+	//방명록 글 삭제 폼
+	
+	@RequestMapping(value="/api/guestbook/deleteForm", method= {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@RequestParam("no") int no, Model model) {
+		System.out.println("ApiGuestbookController>deleteForm()");
+		
+		GuestBookVo guestVo = guestbookService.getGuestUser(no);
+		
+		System.out.println(no);
+		
+		model.addAttribute("guestVo",guestVo);
+		return "apiGuestbook/deleteForm";
+	}
+	
+	//삭제
+	@RequestMapping(value="/api/guestbook/delete", method= {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@ModelAttribute GuestBookVo gVo) {
+		System.out.println("ApiGuestbookController>delete()");
+		
+		guestbookService.guestDelete(gVo);
+		
+		System.out.println(gVo); //대기
+		
+		return "";
 	}
 	
 }

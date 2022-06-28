@@ -205,7 +205,7 @@
 			str += '		<td>'+GuestBookVo.no+'</td>';
 			str += '		<td>'+GuestBookVo.name+'</td>';
 			str += '		<td>'+GuestBookVo.regdate+'</td>';
-			str += '		<td><a href="">[삭제]</a></td>';
+			str += '		<td><a id="delete" href="${pageContext.request.contextPath}/api/guestbook/deleteForm?no='+GuestBookVo.no+'">[삭제]</a></td>';
 			str += '	</tr>';
 			str += '	<tr>';
 			str += '		<td colspan=4 class="text-left">'+GuestBookVo.content+'</td>';
@@ -219,6 +219,7 @@
 			}else{
 				console.log("opt오류");
 			}
+			
 			
 			
 		};

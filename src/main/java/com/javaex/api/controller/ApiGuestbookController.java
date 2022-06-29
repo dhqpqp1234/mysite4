@@ -52,30 +52,17 @@ public class ApiGuestbookController {
 		return gVo;
 	}
 	
-	//방명록 글 삭제 폼
-	
-	@RequestMapping(value="/api/guestbook/deleteForm", method= {RequestMethod.GET, RequestMethod.POST})
-	public String delete(@RequestParam("no") int no, Model model) {
-		System.out.println("ApiGuestbookController>deleteForm()");
+	//방명록 글 삭제
+	@ResponseBody
+	@RequestMapping(value="/api/guestbook/remove", method= {RequestMethod.POST,RequestMethod.GET})
+	public String remove(@ModelAttribute GuestBookVo gVo) {
+		System.out.println("ApiGuestbookController>remove()");
+		System.out.println(gVo);
 		
-		GuestBookVo guestVo = guestbookService.getGuestUser(no);
+		String state = guestbookService.removeGuest(gVo);
 		
-		System.out.println(no);
-		
-		model.addAttribute("guestVo",guestVo);
-		return "apiGuestbook/deleteForm";
+		return state;
 	}
 	
-	//삭제
-	@RequestMapping(value="/api/guestbook/delete", method= {RequestMethod.GET, RequestMethod.POST})
-	public String delete(@ModelAttribute GuestBookVo gVo) {
-		System.out.println("ApiGuestbookController>delete()");
-		
-		guestbookService.guestDelete(gVo);
-		
-		System.out.println(gVo); //대기
-		
-		return "";
-	}
 	
 }

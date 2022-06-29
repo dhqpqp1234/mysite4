@@ -70,4 +70,13 @@ public class GuestBookDao {
 		return count;
 	}
 	
+	//방명록 삭제
+	public int removeGuest(GuestBookVo guestVo) {
+		System.out.println("GuestDao>guestDelete");
+		
+		int count = sqlSession.delete("guestbook.guestDelete", guestVo);
+		
+		return count;
+	}
+	
 }

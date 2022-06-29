@@ -24,10 +24,10 @@
 	
 		<div id="container" class="clearfix">
 			<div id="aside">
-				<h2>방명록</h2>
+				<h2><a href="${pageContext.request.contextPath}/guestbook/addList">방명록</a></h2>
 				<ul>
-					<li>일반방명록</li>
-					<li>방명록</li>
+					<li><a href="${pageContext.request.contextPath}/guestbook/addList">일반방명록</a></li>
+					<li><a href="${pageContext.request.contextPath}/api/guestbook/addList">방명록(ajax)</a></li>
 				</ul>
 			</div>
 			<!-- //aside -->

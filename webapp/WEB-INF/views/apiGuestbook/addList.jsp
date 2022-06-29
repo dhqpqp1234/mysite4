@@ -33,10 +33,10 @@
 
 		<div id="container" class="clearfix">
 			<div id="aside">
-				<h2>방명록</h2>
+				<h2><a href="${pageContext.request.contextPath}/guestbook/addList">방명록</a></h2>
 				<ul>
-					<li>일반방명록</li>
-					<li>ajax방명록</li>
+					<li><a href="${pageContext.request.contextPath}/guestbook/addList">일반방명록</a></li>
+					<li><a href="${pageContext.request.contextPath}/api/guestbook/addList">방명록(ajax)</a></li>
 				</ul>
 			</div>
 			<!-- //aside -->
@@ -83,7 +83,6 @@
 					</table>
 					<!-- //guestWrite -->
 
-					<button id="btnTest" class="btn btn-primary">모달창</button>
 
 					<!-- 리스트 영역 -->
 					<div id="listArea"></div>
@@ -189,6 +188,7 @@
 		$("#delModal").modal();
 	}); */
 	
+	
 	//추가된 글이라 부모 --> 자식에게
 	/* $(".delBtn").on("click",function(){
 		console.log("d");
@@ -242,7 +242,7 @@
 				$("#delModal").modal("hide");	
 			}else{
 				//실패면 안지우고
-				alert("멍충~~! 멍충~~!");
+				alert("멍충~~ 멍충~~");
 				//모달창 닫기
 				$("#delModal").modal("hide");
 			}

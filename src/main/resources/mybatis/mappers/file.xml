@@ -3,7 +3,7 @@
 
 <mapper namespace="fileupload">
 
-<insert id="fileInsert">
+<insert id="fileInsert" parameterType="com.javaex.vo.FileVo">
 	<![CDATA[
 		INSERT INTO fileupload
 		values(SEQ_fileupload_no.nextval,#{orgName},#{saveName},#{filePath},#{fileSize})

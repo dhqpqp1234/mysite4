@@ -29,19 +29,6 @@ public class GuestbookService {
 		return count;
 	}
 	
-	//방명록 저장 (ajax)
-	public GuestBookVo addGuest(GuestBookVo gVo) {
-		System.out.println("GuestService>addGuest");
-		
-		int count = guestDao.InsertGuest(gVo);
-		
-		int no = gVo.getNo();
-		
-		//방금저장한 1개의 데이터를 가져온다
-		GuestBookVo vo = guestDao.getGuest(no);
-		
-		return vo;
-	}
 	
 	
 	//1명 정보가져오기
@@ -61,20 +48,85 @@ public class GuestbookService {
 		return count;
 	}
 	
-	//방명록 삭제
-	public String removeGuest(GuestBookVo gVo) {
-		System.out.println("GuestService>removeGuest");
-		
-		String state;
-		
-		int count = guestDao.removeGuest(gVo);
-		
-		if(count>0) {
-			state = "succeess";
-		}else {
-			state = "fail";
+	//방명록 저장 (ajax)
+		public GuestBookVo addGuest(GuestBookVo gVo) {
+			System.out.println("GuestService>addGuest");
+			
+			guestDao.InsertGuest(gVo);
+			
+			int no = gVo.getNo();
+			
+			//방금저장한 1개의 데이터를 가져온다
+			GuestBookVo vo = guestDao.getGuest(no);
+			
+			return vo;
 		}
 		
-		return state;
+		//방명록 삭제
+		public String removeGuest(GuestBookVo gVo) {
+			System.out.println("GuestService>removeGuest");
+			
+			String state;
+			
+			int count = guestDao.removeGuest(gVo);
+			
+			if(count>0) {
+				state = "succeess";
+			}else {
+				state = "fail";
+			}
+			
+			return state;
+		}
+		
 	}
-}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,10 +65,10 @@
 						<tbody>
 							<tr>
 								<th><label class="form-text" for="input-uname">이름</label>
-								</td>
+								</th>
 								<td><input id="input-uname" type="text" name="name"></td>
 								<th><label class="form-text" for="input-pass">패스워드</label>
-								</td>
+								</th>
 								<td><input id="input-pass" type="password" name="password"></td>
 							</tr>
 							<tr>
@@ -136,8 +135,55 @@
 		console.log("jquery 로 요청 data만 받는 요청");
 		fetchList()
 	});
+	
+	/* 저장버튼 (Json) */
+	$("#btnSubmit").on("click", function() {
+		console.log("저장버튼 클릭");
 
-	/* 저장버튼을 클릭했을때 */
+		//데이터수집
+		var name = $("[name='name']").val();
+		var password = $("[name='password']").val();
+		var content = $("[name='content']").val();
+
+		//객체 만들기
+		var guestVo = {
+			name : name,
+			password : password,
+			content : content
+		};
+
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/api/guestbook/add2",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(guestVo), //개념 다시
+
+			dataType : "json",
+			success : function(gVo) {
+				/* 성공시 처리해야될 코드 작성 */
+				console.log(gVo);
+				
+				//1개데이터 리스트 추가()
+				
+				render(gVo, "up");
+
+				$("[name=name]").val("");
+				$("[name=password]").val("");
+				$("[name=content]").val("");
+
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+	});
+	
+	
+	
+	
+	/* 저장버튼을 클릭했을때 (파라미터) 
 	$("#btnSubmit").on("click", function() {
 		console.log("저장버튼 클릭");
 
@@ -162,9 +208,11 @@
 
 			dataType : "json",
 			success : function(gVo) {
-				/*성공시 처리해야될 코드 작성*/
+				/*성공시 처리해야될 코드 작성
+				console.log(gVo);
 				
 				//1개데이터 리스트 추가()
+				
 				render(gVo, "up");
 
 				$("[name=name]").val("");
@@ -176,10 +224,11 @@
 				console.error(status + " : " + error);
 			}
 		});
-
+		
 	});
-
+	*/
 	
+	/* ------------------------------------------------------------------------------------------------- */
 	
 	/* 삭제 버튼을 눌럿을때 */ 
 	/* $(document).on("click",".delBtn",function(){
@@ -268,28 +317,24 @@
 	function fetchList() {
 		//리스트 요청 + 그리기
 		$.ajax({
-			//요청관련
 			url : "${pageContext.request.contextPath }/api/guestbook/list",
 			type : "post",
 			//contentType : "application/json",
-			//data : {name: "홍길동"},
-
-			//요청받는
+			//data : {name: ”홍길동"},
+			
 			dataType : "json",
-			success : function(guestbookList) {
-				/*성공시 처리해야될 코드 작성*/
-				console.log(guestbookList);
-				//화면 data + html에 그린다.
-
-				for (var i = 0; i < guestbookList.length; i++) {
-					render(guestbookList[i], "down"); //vo ----> 화면에 그린다.
-				}
-
+			success : function(guestList){
+			/*성공시 처리해야될 코드 작성*/
+			
+			for(var i=0; i<guestList.length; i++){
+				render(guestList[i], "down");
+			};
+			
 			},
 			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
+			console.error(status + " : " + error);
 			}
-		});
+			});
 	}
 
 	//리스트 그리기 1개씩
@@ -328,3 +373,4 @@
 </script>
 
 </html>
+

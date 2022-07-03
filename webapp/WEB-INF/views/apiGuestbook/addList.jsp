@@ -151,32 +151,27 @@
 			password : password,
 			content : content
 		};
-
+		
 		$.ajax({
-
-			url : "${pageContext.request.contextPath}/api/guestbook/add2",
+			url : "${pageContext.request.contextPath }/api/guestbook/add2",
 			type : "post",
-			contentType : "application/json",
-			data : JSON.stringify(guestVo), //개념 다시
-
+			contentType : "application/json", //--> JSON으로 보낸다
+			data : JSON.stringify(guestVo), //-->객체를 json문자열로 바꿔준다
 			dataType : "json",
-			success : function(gVo) {
-				/* 성공시 처리해야될 코드 작성 */
-				console.log(gVo);
-				
-				//1개데이터 리스트 추가()
-				
-				render(gVo, "up");
-
-				$("[name=name]").val("");
-				$("[name=password]").val("");
-				$("[name=content]").val("");
-
+			success : function(result){
+			/*성공시 처리해야될 코드 작성*/
+			render(result,"up");			
+			
+			//입력폼 초기화
+			$("[name='name']").val("");
+			$("[name='password']").val("");
+			$("[name='content']").val("");
+			
 			},
 			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
+			console.error(status + " : " + error);
 			}
-		});
+			});
 		
 	});
 	

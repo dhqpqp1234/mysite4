@@ -52,13 +52,13 @@
 	
 				<div id="user">
 					<div id="joinForm">
-						<form id="join-form" action="/mysite4/user/join" method="get">
+						<form action="/mysite4/user/join" method="get">
 	
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="overlap">중복체크</button>
+								<button type="button" id="overlap">중복체크</button><div id="div"></div>
 							</div>
 	
 							<!-- 비밀번호 -->
@@ -115,40 +115,26 @@
 
 </body>
 	<script type="text/javascript">
-		$("#join-form").on("submit",function(){
-			console.log("즐");
-			
-			 var id = $("#input-uid").val();
-			 var password = $("#input-pass").val();
-			 var name = $("#input-name").val(); 
-			 
-			if(id == ""|| id == null){
-				alert("아이디를 입력해 주세요.");
-				return false
-			} 
-			
-			//password =="" || password == ""
-			if(password.length<8){
-				alert("비밀번호를 확인해 주세요.");
-				return false
-			}
-			
-			if(name == null || name == ""){
-				alert("이름을 입력해주세요");
-				return false
-			}
-			
-			//약관동의
-			var agree = $("#chk-agree").is(":checked");
-			
-			if(agree == false){
-				alert("약관에 동의해주세요.");
-				return false
-			}
-			
-			return true
+		//중복체크를 눌럿을때
+		$("#overlap").on("click", function(){
+			console.log("중복체크");
+					
+			$.ajax({
+				url : "${pageContext.request.contextPath }/api/gb/add",
+				type : "post",
+				contentType : "application/json",
+				data : {name: ”홍길동"},
+				dataType : "json",
+				success : function(result){
+				/*성공시 처리해야될 코드 작성*/
+				},
+				error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+				}
+				});
+
 			
 		});
-	</script>
 	
+	</script>
 </html>

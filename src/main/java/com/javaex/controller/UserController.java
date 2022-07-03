@@ -31,6 +31,8 @@ public class UserController {
 		return"user/joinOk";
 	}
 	
+	
+	
 	//회원가입폼
 	@RequestMapping(value="/joinForm", method= {RequestMethod.POST, RequestMethod.GET})
 	public String joinForm() {

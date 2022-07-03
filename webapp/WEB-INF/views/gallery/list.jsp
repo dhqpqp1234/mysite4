@@ -97,7 +97,8 @@
 					<h4 class="modal-title">이미지등록</h4>
 				</div>
 				
-				<form method="post" action="${pageContext.request.contextPath }/gallery/upload"  >
+				<form method="post" action="${pageContext.request.contextPath }/gallery/upload"  enctype="multipart/form-data">
+				
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="form-text">글작성</label>

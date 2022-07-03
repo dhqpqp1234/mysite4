@@ -34,7 +34,6 @@ public class GalleryController {
 	}
 	
 	//파일 업로드
-	@ResponseBody
 	@RequestMapping(value="gallery/upload", method= {RequestMethod.POST, RequestMethod.GET})
 	public String galleryUpload(@RequestParam("file") MultipartFile file, Model model, GalleryVo gVo) {
 		System.out.println("GalleryController>upload");
@@ -43,7 +42,7 @@ public class GalleryController {
 		
 		model.addAttribute("saveName",saveName);
 		
-		return saveName;
+		return "redirect:/gallery/list";
 	}
 	//보기
 	@ResponseBody
